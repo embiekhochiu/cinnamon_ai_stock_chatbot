@@ -40,7 +40,9 @@ To run this project locally, follow these steps:
 2. **Set Up Virtual Environment**:
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    source venv/bin/activate
+    # On Windows use
+    venv\Scripts\activate
     ```
 
 3. **Install Dependencies**:
