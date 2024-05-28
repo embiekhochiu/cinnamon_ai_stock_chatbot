@@ -11,7 +11,6 @@ Welcome to the Stock Chatbot Application! This project is a web-based chatbot th
 - [Project Structure](#project-structure)
 - [Future Improvements](#future-improvements)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 The Stock Chatbot Application allows users to interact with a chatbot to get real-time stock prices and market insights. It uses OpenAI's GPT-3.5-turbo for natural language processing and the Alpha Vantage API for fetching stock data. The application is designed with a user-friendly web interface and is containerized using Docker for easy deployment.
