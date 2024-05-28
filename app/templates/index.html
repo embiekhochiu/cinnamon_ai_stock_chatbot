@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Stock Chatbot</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Welcome to our online chatbot about global stock market 📈</div>
+
+        <div class="chat-box" id="chat-box">
+            <!-- Messages will appear here -->
+        </div>
+        <form id="chat-form" class="chat-input">
+            <input type="text" id="user-input" placeholder="Ask me about stock...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInput = document.getElementById('user-input').value;
+            const chatBox = document.getElementById('chat-box');
+            
+            chatBox.innerHTML += `<div class="user-message"><div class="user-avatar">👻</div><div>${userInput}</div></div>`;
+            document.getElementById('user-input').value = '';
+
+            fetch('{{ url_for("main.chat") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `message=${userInput}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                chatBox.innerHTML += `<div class="bot-message"><div class="bot-avatar">👾</div><div>${data.response.replace(/\n/g, '<br>')}</div></div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        });
+    </script>
+</body>
+</html>
+
